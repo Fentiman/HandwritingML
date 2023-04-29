@@ -141,6 +141,7 @@ def display_scaled_rotated_translation_diff(image1_data, image2_data, im2_scale_
     # # padded_image1 = pad_translated(image1_data, (max(image1_data.shape[0], image2_data.shape[0]*cos)), ())
     # display_translation_diff(image1_data, np.array(rotated_image2), translate, title)
 
+    ## This is an old prompt for copilot and it doesn't match what I ended up doing, but I'm too busy to fix/update this atm
     # perform the following steps to process the transforms:
     # 1. create a square buffer with dimensions 3 times as long as the largest dimension of either image
     # 2. create a RegularGridInterpolator for image2_data
