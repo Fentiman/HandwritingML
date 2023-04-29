@@ -1,5 +1,6 @@
 
 # To run this, you'll need to get the generated images of fonts' characters, and mess with filename paths so the script will find them.
+# Link to discord message where I posted a generated images tar: https://discord.com/channels/@me/1092879603300827228/1099429390326169671
 # You'll also need to install a few packages (see imports)
 
 from PIL import Image
