@@ -1,5 +1,6 @@
 
-# the file paths are all wrong here so you'll have to change them
+# the file paths are wrong here so you'll have to change them
+# also, instead of running this, you can just download the output I got: https://discord.com/channels/@me/1092879603300827228/1099429390326169671
 
 from PIL import Image, ImageFont, ImageDraw
 import numpy as np
