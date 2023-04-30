@@ -1,4 +1,6 @@
 # Individual characters from image
+"""Takes user image (e.g. be doing example above) and produces multiple images,
+   each containing one character from the source image."""
 
 import cv2
 from imutils import contours

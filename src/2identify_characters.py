@@ -1,4 +1,6 @@
 # Identify characters from each image and map "character: filename" to a dictionary
+"""Uses keras-ocr to identify characters, then creates a dictionary where each entry is
+   a character and its respective image (file name)."""
 
 import os
 import keras_ocr

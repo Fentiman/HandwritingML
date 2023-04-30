@@ -1,4 +1,6 @@
 # Compare handwritten characters from dictionary to font characters
+"""Loops through dictionary of handwritten characters, comparing each to their respective font counterparts.
+   Computes hamming distance (0 = identical, 64 = not similar at all) based on these comparisons."""
 
 import os
 import imagehash
