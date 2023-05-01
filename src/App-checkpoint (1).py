@@ -138,6 +138,7 @@ import numpy as np
 import cv2
 from PIL import Image, ImageTk
 
+#function for taking in file to pass to analyzer functions
 def open_file():
         file = tk.filedialog.askopenfile(filetypes =[('Image Files', '*.png'),('Image Files', '*.JPG')])
         get_char(file)
@@ -154,7 +155,7 @@ class MainApp(tk.Tk):
          
         # creating a container
         container = tk.Frame(self) 
-        container.pack(side = "top", fill = "both", expand = True)
+        container.pack(fill = "both", expand = True)
   
         container.grid_rowconfigure(0, weight = 1)
         container.grid_columnconfigure(0, weight = 1)
@@ -169,7 +170,7 @@ class MainApp(tk.Tk):
             frame = F(container, self)
   
             # initializing frame of that object from
-            # startpage, page1, page2 respectively with
+            # startpage, results respectively with
             # for loop
             self.frames[F] = frame
   
@@ -187,10 +188,11 @@ class MainApp(tk.Tk):
 # first window frame startpage
   
 class StartPage(tk.Frame):
+    
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         
-        # label of frame Layout 2
+        # label of frame Layout
         label = ttk.Label(self, text ="Handwriting Comparator", font = LARGEFONT)
         author = ttk.Label(self, text ="By Brent Melby, Joseph and Alex Robey")
         
@@ -198,9 +200,13 @@ class StartPage(tk.Frame):
         # grid
         label.grid(row = 1, column = 2, padx = 10, pady = 10)
         author.grid(row = 2, column = 2, padx = 10, pady = 10)
+        
+        #Instructions for User
         greeting = tk.Label(self, text="Please Upload an image file containing the text you wish to compare(Acceptable formats are JPG, PNG, etc.)")
         greeting.grid(row = 3, column = 2, padx = 10, pady = 10)
   
+
+        #File Explorer
         button1 = ttk.Button(self, text ="Open File",
         command = lambda : [open_file(), controller.show_frame(Results)])
      
@@ -215,39 +221,40 @@ class StartPage(tk.Frame):
 class Results(tk.Frame):
         
     def __init__(self, parent, controller):
-         
+        
+        #Page initializer
         tk.Frame.__init__(self, parent)
         label = ttk.Label(self, text ="Results", font = LARGEFONT)
-        label.grid(row = 1, column = 2, padx = 10, pady = 10)
-          
-        # button to show frame 2 with text
-        # layout2
+        label.grid(row = 1, column = 3, padx = 30, pady = 30)
         
         # Load the images using PIL
-        imgChar = Image.open("C://Users//markt//Downloads//HandwritingML-main//HandwritingML-main//img//test//char_hand.png")
         imgFont = Image.open("C://Users//markt//Downloads//HandwritingML-main//HandwritingML-main//img//test//char_font.png")
 
         # Convert the PIL images to PhotoImage
-        photoChar = ImageTk.PhotoImage(imgChar)
-        photoFont = ImageTk.PhotoImage(imgFont)
+        photoChar = ImageTk.PhotoImage(file = "C://Users//markt//Downloads//HandwritingML-main//HandwritingML-main//img//test//char_hand.png")
+        photoFont = ImageTk.PhotoImage(file = "C://Users//markt//Downloads//HandwritingML-main//HandwritingML-main//img//test//char_font.png")
 
         # Create the labels using PhotoImage
         imglabel1 = ttk.Label(self, image=photoChar)
         imglabel2 = ttk.Label(self, image=photoFont)
-
+        #Setting labels to the converted photos
         imglabel1.image = photoChar
         imglabel2.image = photoFont
+        #Setting labels in page grid
+        imglabel1.grid(row = 2, column = 4, padx = 5, pady = 5, sticky="nsew")
+        imglabel2.grid(row = 3, column = 4, padx = 5, pady = 5, sticky="nsew")
         
-        imglabel1.grid(row = 2, column = 3, padx = 10, pady = 10)
-        imglabel2.grid(row = 3, column = 3, padx = 10, pady = 10)
         
+        #Scoring Results Display
+        result = ttk.Label(self, text ="Your handwriting scored a  ")
+        #return to menu button
         button1 = ttk.Button(self, text ="Return to Menu",
                             command = lambda : controller.show_frame(StartPage))
-        result = ttk.Label(self, text ="Your handwriting scored a  ")
+        
      
         # putting the button in its place
         # by using grid
-        button1.grid(row = 4, column = 2, padx = 10, pady = 10)
+        button1.grid(row = 4, column = 3, padx = 10, pady = 10)
         
         
   
@@ -256,7 +263,6 @@ class Results(tk.Frame):
 app = MainApp()
 app.title("Handwriting Comparator")
 app.mainloop()
-
 
 # In[ ]:
 
